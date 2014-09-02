@@ -1,0 +1,5 @@
+item.electricFishingRod.name=Electric Fishing Rod
+item.advancedElectricFishingRod.name=Advanced Electric Fishing Rod
+
+info.outOfEnergy=Not enough energy!
+info.discharged=Discharged %d EU.
