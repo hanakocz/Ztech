@@ -147,8 +147,8 @@ public class ItemElectricFishBase extends Item implements IElectricItem
 			{
 				ElectricItem.manager.use(itemStack, useLeft, player);
 				EntityLiving entityLiving = (EntityLiving) entity;
-				entityLiving.attackEntityFrom(ElectricFishDamageSource.electricity, damage);
-				player.attackEntityFrom(ElectricFishDamageSource.electricity, selfdamage);
+				entityLiving.attackEntityFrom(DamageSourceElectricFish.electricity, damage);
+				player.attackEntityFrom(DamageSourceElectricFish.electricity, selfdamage);
 			}
 		}
 		return false;

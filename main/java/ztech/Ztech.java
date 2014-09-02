@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 
 import ztech.common.CommonProxy;
 import ztech.init.ConfigurationHandler;
+import ztech.init.ModBlocks;
 import ztech.init.ModCreativeTab;
 import ztech.init.ModItems;
 import ztech.init.ModRecipes;
@@ -23,6 +24,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = Ztech.MODID, name = Ztech.MODNAME, version = "1.7.10.01", guiFactory = "ztech.client.gui.GuiFactory", dependencies = "required-after:IC2")
 public class Ztech
@@ -50,11 +52,15 @@ public class Ztech
 		config.init(event.getSuggestedConfigurationFile());
 
 		ModItems.init();
+		ModBlocks.init();
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		ModRecipes.init();
+		proxy.registerTileEntities();
 	}
 }
