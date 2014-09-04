@@ -2,6 +2,7 @@ package ztech.init;
 
 import ztech.Ztech;
 import ztech.items.ItemAdvancedElectricRod;
+import ztech.items.ItemElectricRail;
 import ztech.items.ItemElectricRod;
 import ztech.items.ItemFoodOnAStick;
 import ztech.items.ItemPanFood;
@@ -16,11 +17,14 @@ public class ModItems
     public static ItemStack meltedSugar;
     public static ItemStack sugarCandy;
     public static ItemStack lollipop;
+    // Electric Rails
+    public static ItemStack electricRail;
     
     public static void init()
     {
     	initElecticFishingRod();
     	initNuclearPan();
+    	initElecticRails();
     }
     
     private static void initElecticFishingRod()
@@ -40,5 +44,13 @@ public class ModItems
 	        sugarCandy = new ItemStack(new ItemPanFood("sugarCandy", 4, 0.0F, false));
 	        lollipop = new ItemStack(new ItemFoodOnAStick("lollipop", 8, 0.0F, false));
     	}    	
+    }
+    
+    private static void initElecticRails()
+    {
+    	if (Ztech.config.enableElectricRails)
+    	{
+    		electricRail = new ItemStack(new ItemElectricRail("electricRail"));
+    	}
     }
 }

@@ -10,6 +10,7 @@ import ztech.init.ModItems;
 import ztech.init.ModRecipes;
 import ztech.items.ItemAdvancedElectricRod;
 import ztech.items.ItemElectricRod;
+import ztech.network.ChannelHandler;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.Recipes;
 import ic2.core.util.StackUtil;
@@ -26,7 +27,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-@Mod(modid = Ztech.MODID, name = Ztech.MODNAME, version = "1.7.10.01", guiFactory = "ztech.client.gui.GuiFactory", dependencies = "required-after:IC2")
+@Mod(modid = Ztech.MODID, name = Ztech.MODNAME, version = "0.0.1", guiFactory = "ztech.client.gui.GuiFactory", dependencies = "required-after:IC2; after:Railcraft")
 public class Ztech
 {
 	@Instance(Ztech.MODID)
@@ -50,6 +51,9 @@ public class Ztech
 		config = new ConfigurationHandler();
 		FMLCommonHandler.instance().bus().register(config);
 		config.init(event.getSuggestedConfigurationFile());
+		
+		//Register channel handler
+		ChannelHandler.init();
 
 		ModItems.init();
 		ModBlocks.init();

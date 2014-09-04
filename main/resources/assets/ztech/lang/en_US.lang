@@ -3,8 +3,15 @@ item.advancedElectricFishingRod.name=Advanced Electric Fishing Rod
 item.meltedSugar.name=Melted Sugar
 item.sugarCandy.name=Sugar Candy
 item.lollipop.name=Lollipop
+item.electricRail.name=Electric Rail
 
 tile.nuclearPan.name=Nuclear Pan
+tile.trackElectric.name=Standard Electric Track
+tile.trackAdvancedElectric.name=Advanced Electric Track
+tile.thirdRail.name=Third Rail
+tile.trackAdvanced.name=Advanced Track
+tile.maglevRail.name=Maglev Rail
+tile.maglevCover.name=Maglev Cover
 
 info.outOfEnergy=Not enough energy!
 info.discharged=Discharged %d EU.
