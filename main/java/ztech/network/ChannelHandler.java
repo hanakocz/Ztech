@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
-import ztech.network.messages.PacketSendSparks;
+import ztech.network.messages.*;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -16,6 +16,7 @@ public class ChannelHandler
     public static void init()
     {
     	network.registerMessage(PacketSendSparks.class, PacketSendSparks.class, 1, Side.CLIENT);
+    	network.registerMessage(PacketSendButtonClick.class, PacketSendButtonClick.class, 2, Side.SERVER);
     }
     
 	public static void sendPacketToAllAround(int x, int y, int z, int dist, World world, IMessage packet)

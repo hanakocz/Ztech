@@ -1,11 +1,14 @@
 package ztech.common;
 
 import ztech.Ztech;
+import ztech.containers.ContainerNetworkAnchor;
 import ztech.containers.ContainerNuclearPan;
 import ztech.tileentities.TileEntityElectricRail;
 import ztech.tileentities.TileEntityMaglevCover;
 import ztech.tileentities.TileEntityMaglevRail;
+import ztech.tileentities.TileEntityNetworkAnchor;
 import ztech.tileentities.TileEntityNuclearPan;
+import ztech.tileentities.TileEntityScanTerminator;
 import ztech.tileentities.TileEntityThirdRail;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -25,11 +28,15 @@ public class CommonProxy implements IGuiHandler
         	return null;
         }
         TileEntity tile = world.getTileEntity(x, y, z);
-        if (!(tile instanceof TileEntityNuclearPan)) 
+        if (tile instanceof TileEntityNuclearPan) 
         {
-        	return null;
+        	return new ContainerNuclearPan(player, (TileEntityNuclearPan) tile);
         }
-        return new ContainerNuclearPan(player, (TileEntityNuclearPan) tile);		
+        if (tile instanceof TileEntityNetworkAnchor) 
+        {
+        	return new ContainerNetworkAnchor(player, (TileEntityNetworkAnchor) tile);
+        }        
+        return null;
     }
 
 	@Override
@@ -51,6 +58,11 @@ public class CommonProxy implements IGuiHandler
             GameRegistry.registerTileEntity(TileEntityThirdRail.class, "TileEntityThirdRail");
             GameRegistry.registerTileEntity(TileEntityMaglevCover.class, "TileEntityMaglevCover");
             GameRegistry.registerTileEntity(TileEntityMaglevRail.class, "TileEntityMaglevRail");
+    	}
+    	if (Ztech.config.enableNetworkAnchor)
+    	{
+            GameRegistry.registerTileEntity(TileEntityNetworkAnchor.class, "TileEntityNetworkAnchor");
+            GameRegistry.registerTileEntity(TileEntityScanTerminator.class, "TileEntityScanTerminator");
     	}
 	}
 }

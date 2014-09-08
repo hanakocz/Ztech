@@ -1,5 +1,6 @@
 package ztech.init;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import ztech.Ztech;
 import ztech.blocks.*;
 import ztech.tileentities.TileEntityElectricRail;
@@ -16,11 +17,13 @@ public class ModBlocks
 	public static Block blockThirdRail;
 	public static Block blockMaglevRail;
 	public static Block blockMaglevCover;
+	public static BlockNetworkAnchor blockNetworkAnchor;
 	
     public static void init()
     {
     	initNuclearPan();
     	initElectricRails();
+    	initNetworkAnchor();
     }
     
     private static void initNuclearPan()
@@ -41,6 +44,14 @@ public class ModBlocks
     		blockThirdRail = new BlockRailThird("thirdRail", Material.rock);
     		blockMaglevRail = new BlockMaglevRail("maglevRail", Material.rock);
     		blockMaglevCover = new BlockMaglevCover("maglevCover", (float) Ztech.config.maglevSpeed);
+    	}
+    }
+
+    private static void initNetworkAnchor()
+    {
+    	if (Ztech.config.enableNetworkAnchor)
+    	{
+    		blockNetworkAnchor = new BlockNetworkAnchor(new Material(MapColor.ironColor));
     	}
     }
 }

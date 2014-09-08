@@ -11,12 +11,14 @@ import ztech.init.ModRecipes;
 import ztech.items.ItemAdvancedElectricRod;
 import ztech.items.ItemElectricRod;
 import ztech.network.ChannelHandler;
+import ztech.utils.ChunkloadCallback;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.Recipes;
 import ic2.core.util.StackUtil;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.ForgeChunkManager;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -27,7 +29,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-@Mod(modid = Ztech.MODID, name = Ztech.MODNAME, version = "0.0.1", guiFactory = "ztech.client.gui.GuiFactory", dependencies = "required-after:IC2; after:Railcraft")
+@Mod(modid = Ztech.MODID, name = Ztech.MODNAME, version = "0.0.1", guiFactory = "ztech.client.gui.GuiFactory", dependencies = "required-after:IC2; after:gregtech_addon; after:IC2CA; after:Railcraft")
 public class Ztech
 {
 	@Instance(Ztech.MODID)
@@ -59,6 +61,9 @@ public class Ztech
 		ModBlocks.init();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
+		
+        // Register chunk loading callback
+        ForgeChunkManager.setForcedChunkLoadingCallback(instance, new ChunkloadCallback());
 	}
 
 	@EventHandler

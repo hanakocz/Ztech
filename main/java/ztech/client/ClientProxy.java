@@ -3,13 +3,17 @@ package ztech.client;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ztech.Ztech;
+import ztech.client.gui.GuiNetworkAnchor;
 import ztech.client.gui.GuiNuclearPan;
 import ztech.client.render.RenderMaglevCover;
 import ztech.common.CommonProxy;
+import ztech.containers.ContainerNetworkAnchor;
 import ztech.tileentities.TileEntityElectricRail;
 import ztech.tileentities.TileEntityMaglevCover;
 import ztech.tileentities.TileEntityMaglevRail;
+import ztech.tileentities.TileEntityNetworkAnchor;
 import ztech.tileentities.TileEntityNuclearPan;
+import ztech.tileentities.TileEntityScanTerminator;
 import ztech.tileentities.TileEntityThirdRail;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -34,11 +38,15 @@ public class ClientProxy extends CommonProxy
         	return null;
         }
         TileEntity tile = world.getTileEntity(x, y, z);
-        if (!(tile instanceof TileEntityNuclearPan))
+        if (tile instanceof TileEntityNuclearPan)
         {
-        	return null;
+        	return new GuiNuclearPan(player, (TileEntityNuclearPan) tile);
         }
-        return new GuiNuclearPan(player, (TileEntityNuclearPan) tile);
+        if (tile instanceof TileEntityNetworkAnchor) 
+        {
+        	return new GuiNetworkAnchor(player, (TileEntityNetworkAnchor) tile);
+        }
+        return null;
     }
 
     @Override
@@ -58,6 +66,11 @@ public class ClientProxy extends CommonProxy
             int i = RenderingRegistry.getNextAvailableRenderId();
             RenderingRegistry.registerBlockHandler(new RenderMaglevCover(i));
             Ztech.config.coverRenderId = i;
+    	}
+    	if (Ztech.config.enableNetworkAnchor)
+    	{
+            GameRegistry.registerTileEntity(TileEntityNetworkAnchor.class, "TileEntityNetworkAnchor");
+            GameRegistry.registerTileEntity(TileEntityScanTerminator.class, "TileEntityScanTerminator");
     	}
 	}
 }

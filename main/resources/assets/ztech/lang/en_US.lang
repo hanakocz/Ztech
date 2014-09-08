@@ -12,6 +12,20 @@ tile.thirdRail.name=Third Rail
 tile.trackAdvanced.name=Advanced Track
 tile.maglevRail.name=Maglev Rail
 tile.maglevCover.name=Maglev Cover
+tile.networkAnchor.name=Network Anchor
+tile.scanTerminator.name=Scan Terminator
+
+container.networkAnchor=Network Anchor
+gui.networkAnchor.scan=Network scan ->
+gui.networkAnchor.area=Area: %dx%d
+gui.networkAnchor.tiles=Tiles: %d
+gui.networkAnchor.chunks1=Chunks: %d
+gui.networkAnchor.chunks2=Chunks: %d/%d
+gui.networkAnchor.tickets=Tickets: %d
+gui.networkAnchor.decArea=A-
+gui.networkAnchor.incArea=A+
+gui.networkAnchor.restart=Restart
+gui.networkAnchor.charge=%d/%d EU
 
 info.outOfEnergy=Not enough energy!
 info.discharged=Discharged %d EU.
