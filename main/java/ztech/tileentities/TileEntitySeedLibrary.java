@@ -1,22 +1,18 @@
 package ztech.tileentities;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import ic2.core.block.invslot.InvSlot;
+import ic2.core.block.machine.tileentity.TileEntityElectricMachine;
+import ic2.core.item.ItemCropSeed;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Vector;
-import java.util.zip.GZIPOutputStream;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
 import ztech.containers.FakeSlot;
 import ztech.network.ChannelHandler;
 import ztech.network.messages.PacketMarkBlockForUpdate;
@@ -25,9 +21,7 @@ import ztech.network.messages.PacketSendGuiSlider;
 import ztech.network.messages.PacketSetSeedCount;
 import ztech.network.messages.PacketUpdateGUIFilter;
 import ztech.utils.SeedLibraryFilter;
-import ic2.core.block.invslot.InvSlot;
-import ic2.core.block.machine.tileentity.TileEntityElectricMachine;
-import ic2.core.item.ItemCropSeed;
+import cpw.mods.fml.common.FMLCommonHandler;
 
 public class TileEntitySeedLibrary extends TileEntityElectricMachine // implements ISpecialInventory
 {
@@ -141,7 +135,7 @@ public class TileEntitySeedLibrary extends TileEntityElectricMachine // implemen
 			{
 				ChannelHandler.sendPacketToAllAround(xCoord, yCoord, zCoord, 64, worldObj, new PacketMarkBlockForUpdate(this.xCoord, this.yCoord, this.zCoord, this.energy));
 			}			
-			energy -= 10;
+			energy -= 1;
 			if (energy < 0)
 			{
 				energy = 0;

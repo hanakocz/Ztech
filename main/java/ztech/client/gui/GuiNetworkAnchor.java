@@ -3,7 +3,6 @@ package ztech.client.gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -13,7 +12,6 @@ import ztech.Ztech;
 import ztech.containers.ContainerNetworkAnchor;
 import ztech.network.ChannelHandler;
 import ztech.network.messages.PacketSendButtonClick;
-import ztech.network.messages.PacketSendSparks;
 import ztech.tileentities.TileEntityNetworkAnchor;
 
 public class GuiNetworkAnchor extends GuiContainer

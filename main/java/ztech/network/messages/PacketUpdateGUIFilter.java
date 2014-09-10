@@ -1,24 +1,21 @@
 package ztech.network.messages;
 
+import io.netty.buffer.ByteBuf;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.zip.GZIPInputStream;
 
-import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.nbt.CompressedStreamTools;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import ztech.Ztech;
-import ztech.containers.ContainerSeedLibrary;
 import ztech.tileentities.TileEntitySeedLibrary;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -82,7 +79,7 @@ public class PacketUpdateGUIFilter implements IMessage, IMessageHandler<PacketUp
 	@Override
 	public IMessage onMessage(PacketUpdateGUIFilter message, MessageContext ctx)
 	{
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
 		int x = MathHelper.floor_double(player.posX);
 		int y = MathHelper.floor_double(player.posY);
 		int z = MathHelper.floor_double(player.posZ);

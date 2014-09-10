@@ -1,13 +1,13 @@
 package ztech.blocks;
 
-import ztech.Ztech;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRail;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import ztech.Ztech;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockRailEx extends BlockRail
 {

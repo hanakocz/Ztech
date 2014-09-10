@@ -1,11 +1,11 @@
 package ztech.blocks;
 
-import ztech.Ztech;
-import ztech.tileentities.TileEntityMaglevCover;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import ztech.Ztech;
+import ztech.tileentities.TileEntityMaglevCover;
 
 public class BlockMaglevCover extends BlockRailEx
 {

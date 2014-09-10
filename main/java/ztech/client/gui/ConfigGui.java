@@ -1,9 +1,9 @@
 package ztech.client.gui;
 
-import ztech.Ztech;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
+import ztech.Ztech;
 import cpw.mods.fml.client.config.GuiConfig;
 
 public class ConfigGui extends GuiConfig 

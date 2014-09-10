@@ -2,9 +2,8 @@ package ztech.network.messages;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.tileentity.TileEntity;
-import ztech.client.entities.EntitySparksFX;
 import ztech.tileentities.TileEntitySeedLibrary;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
@@ -48,13 +47,13 @@ public class PacketMarkBlockForUpdate implements IMessage, IMessageHandler<Packe
 	@Override
 	public IMessage onMessage(PacketMarkBlockForUpdate message, MessageContext ctx)
 	{
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-		TileEntity tile = player.worldObj.getTileEntity(message.x,message.y,message.z);
+		WorldClient world = Minecraft.getMinecraft().theWorld;
+		TileEntity tile = world.getTileEntity(message.x,message.y,message.z);
 		if (tile instanceof TileEntitySeedLibrary)
 		{
 			((TileEntitySeedLibrary) tile).energy = message.energy;
 		}
-		player.worldObj.func_147479_m(message.x,message.y,message.z);
+		world.func_147479_m(message.x,message.y,message.z);
 		return null;
 	}
 }

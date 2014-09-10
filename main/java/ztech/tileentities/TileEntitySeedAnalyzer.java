@@ -1,14 +1,5 @@
 package ztech.tileentities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ztech.client.gui.GuiSeedAnalyzer;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.RecipeInputItemStack;
 import ic2.api.recipe.RecipeOutput;
@@ -17,6 +8,18 @@ import ic2.core.block.invslot.InvSlotProcessableGeneric;
 import ic2.core.block.machine.container.ContainerStandardMachine;
 import ic2.core.block.machine.tileentity.TileEntityStandardMachine;
 import ic2.core.item.ItemCropSeed;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.ForgeDirection;
+import ztech.client.gui.GuiSeedAnalyzer;
 
 public class TileEntitySeedAnalyzer extends TileEntityStandardMachine
 {
@@ -175,6 +178,7 @@ public class TileEntitySeedAnalyzer extends TileEntityStandardMachine
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public GuiScreen getGui(EntityPlayer player, boolean bool)
 	{ 
 		return new GuiSeedAnalyzer(new ContainerStandardMachine(player, this));

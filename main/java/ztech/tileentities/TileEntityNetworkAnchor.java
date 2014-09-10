@@ -1,17 +1,5 @@
 package ztech.tileentities;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.TreeSet;
-
-import ztech.Ztech;
-import ztech.init.ModBlocks;
-import ztech.utils.BlockCoords;
-import ztech.utils.ChunkCoords;
-import ztech.utils.UpgradeDictionary;
-import ztech.utils.UpgradeModule;
-import ic2.api.energy.EnergyNet;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.energy.tile.IEnergySink;
@@ -20,23 +8,34 @@ import ic2.api.energy.tile.IEnergyTile;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import ic2.api.tile.IWrenchable;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.TreeSet;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagDouble;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagShort;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeChunkManager;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import net.minecraftforge.common.ForgeChunkManager.Type;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
+import ztech.Ztech;
+import ztech.init.ModBlocks;
+import ztech.utils.BlockCoords;
+import ztech.utils.ChunkCoords;
+import ztech.utils.UpgradeDictionary;
+import ztech.utils.UpgradeModule;
 
 public class TileEntityNetworkAnchor  extends TileEntity implements IInventory, IEnergySink, IWrenchable
 {

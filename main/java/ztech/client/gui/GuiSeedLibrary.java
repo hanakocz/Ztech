@@ -1,26 +1,24 @@
 package ztech.client.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 import ztech.Ztech;
 import ztech.containers.ContainerSeedLibrary;
 import ztech.tileentities.TileEntitySeedLibrary;
 import ztech.utils.SeedLibraryFilter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GuiSeedLibrary extends GuiContainer
 {

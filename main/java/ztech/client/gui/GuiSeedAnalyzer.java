@@ -1,12 +1,13 @@
 package ztech.client.gui;
 
-import org.lwjgl.opengl.GL11;
-
-import ztech.Ztech;
 import ic2.core.block.machine.container.ContainerStandardMachine;
 import ic2.core.block.machine.tileentity.TileEntityStandardMachine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
+import ztech.Ztech;
 
 public class GuiSeedAnalyzer extends GuiContainer
 {

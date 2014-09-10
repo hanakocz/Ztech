@@ -1,6 +1,5 @@
 package ztech.tileentities;
 
-import ztech.Ztech;
 import ic2.api.reactor.IReactor;
 import ic2.api.reactor.IReactorChamber;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,6 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
+import ztech.Ztech;
 
 public class TileEntityNuclearPan extends TileEntity implements ISidedInventory
 {

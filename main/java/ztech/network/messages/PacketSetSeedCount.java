@@ -1,18 +1,8 @@
 package ztech.network.messages;
 
 import io.netty.buffer.ByteBuf;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.Arrays;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.CompressedStreamTools;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import ztech.Ztech;
@@ -63,7 +53,7 @@ public class PacketSetSeedCount implements IMessage, IMessageHandler<PacketSetSe
 	@Override
 	public IMessage onMessage(PacketSetSeedCount message, MessageContext ctx)
 	{
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
 		int x = MathHelper.floor_double(player.posX);
 		int y = MathHelper.floor_double(player.posY);
 		int z = MathHelper.floor_double(player.posZ);

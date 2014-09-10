@@ -5,13 +5,6 @@ import ic2.api.item.IC2Items;
 import java.util.List;
 import java.util.Random;
 
-import ztech.Ztech;
-import ztech.items.ItemNetworkAnchor;
-import ztech.tileentities.TileEntityNetworkAnchor;
-import ztech.tileentities.TileEntityScanTerminator;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -26,6 +19,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import ztech.Ztech;
+import ztech.items.ItemNetworkAnchor;
+import ztech.tileentities.TileEntityNetworkAnchor;
+import ztech.tileentities.TileEntityScanTerminator;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockNetworkAnchor extends Block
 {
