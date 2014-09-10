@@ -3,7 +3,7 @@
 	"modid": "ztech",
 	"name": "Ztech",
 	"description": "Collection of Outdated IC2 Addons",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"mcversion": "1.7.10",
 	"authorList": ["Zuxelus"],
 	"logoFile": "",

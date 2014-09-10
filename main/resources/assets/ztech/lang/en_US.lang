@@ -14,6 +14,8 @@ tile.maglevRail.name=Maglev Rail
 tile.maglevCover.name=Maglev Cover
 tile.networkAnchor.name=Network Anchor
 tile.scanTerminator.name=Scan Terminator
+tile.seedAnalyzer.name=Seed Analyzer
+tile.seedLibrary.name=Seed Library
 
 container.networkAnchor=Network Anchor
 gui.networkAnchor.scan=Network scan ->

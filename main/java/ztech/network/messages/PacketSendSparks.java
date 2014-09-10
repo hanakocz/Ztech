@@ -12,9 +12,9 @@ public class PacketSendSparks implements IMessage, IMessageHandler<PacketSendSpa
 	private double x;
 	private double y;
 	private double z; 
-	
+
 	public PacketSendSparks() {}
-	
+
 	public PacketSendSparks(double x, double y, double z)
 	{
 		this.x = x;
@@ -37,11 +37,11 @@ public class PacketSendSparks implements IMessage, IMessageHandler<PacketSendSpa
 		buf.writeDouble(y);
 		buf.writeDouble(z);
 	}
-	
-    @Override
-    public IMessage onMessage(PacketSendSparks message, MessageContext ctx)
-    {
-    	EntitySparksFX.spawnSparks(Minecraft.getMinecraft().thePlayer.worldObj, message.x, message.y, message.z);
-    	return null;
-    }
+
+	@Override
+	public IMessage onMessage(PacketSendSparks message, MessageContext ctx)
+	{
+		EntitySparksFX.spawnSparks(Minecraft.getMinecraft().thePlayer.worldObj, message.x, message.y, message.z);
+		return null;
+	}
 }

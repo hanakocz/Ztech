@@ -12,13 +12,18 @@ import cpw.mods.fml.relauncher.Side;
 
 public class ChannelHandler
 {
-    public static SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("ztech");
-    public static void init()
-    {
-    	network.registerMessage(PacketSendSparks.class, PacketSendSparks.class, 1, Side.CLIENT);
-    	network.registerMessage(PacketSendButtonClick.class, PacketSendButtonClick.class, 2, Side.SERVER);
-    }
-    
+	public static SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("ztech");
+	public static void init()
+	{
+		network.registerMessage(PacketSendSparks.class, PacketSendSparks.class, 1, Side.CLIENT);
+		network.registerMessage(PacketSendButtonClick.class, PacketSendButtonClick.class, 2, Side.SERVER);
+		network.registerMessage(PacketSendGuiButton.class, PacketSendGuiButton.class, 3, Side.SERVER);
+		network.registerMessage(PacketSendGuiSlider.class, PacketSendGuiSlider.class, 4, Side.SERVER);
+		network.registerMessage(PacketSetSeedCount.class, PacketSetSeedCount.class, 5, Side.CLIENT);
+		network.registerMessage(PacketUpdateGUIFilter.class, PacketUpdateGUIFilter.class, 6, Side.CLIENT);
+		network.registerMessage(PacketMarkBlockForUpdate.class, PacketMarkBlockForUpdate.class, 7, Side.CLIENT);
+	}
+
 	public static void sendPacketToAllAround(int x, int y, int z, int dist, World world, IMessage packet)
 	{
 		@SuppressWarnings("unchecked")

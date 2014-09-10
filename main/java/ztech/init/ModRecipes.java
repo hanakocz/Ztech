@@ -27,6 +27,7 @@ public class ModRecipes
 		initNuclearPan();
 		initElecticRails();
 		initNetworkAnchor();
+		initSeedManager();
 	}
 
 	private static void initElecticFishingRod()
@@ -36,9 +37,7 @@ public class ModRecipes
 			Recipes.advRecipes.addRecipe(
 					ModItems.electricFishingRod,
 					new Object[] {
-							"  M",
-							" T ",
-							"C  ",
+							"  M", " T ", "C  ",
 							'T', IC2Items.getItem("teslaCoil"),
 							'C', StackUtil.copyWithWildCard(IC2Items.getItem("energyCrystal")),
 							'M', IC2Items.getItem("magnetizer")
@@ -46,9 +45,7 @@ public class ModRecipes
 			Recipes.advRecipes.addRecipe(
 					ModItems.advancedElectricFishingRod,
 					new Object[] {
-							"  R",
-							" A ",
-							"C  ",
+							"  R", " A ", "C  ",
 							'A', IC2Items.getItem("advancedCircuit"),
 							'C', StackUtil.copyWithWildCard(IC2Items.getItem("lapotronCrystal")),
 							'R', StackUtil.copyWithWildCard(ModItems.electricFishingRod)
@@ -79,14 +76,12 @@ public class ModRecipes
 							ModItems.meltedSugar,
 							ModItems.meltedSugar,
 							new ItemStack(Items.stick)
-					});    
+					});
 
 			Recipes.advRecipes.addRecipe(
 					new ItemStack(ModBlocks.nuclearPan),
 					new Object[] {
-						"   ",
-						"RAR",
-						"RCR",
+						"   ", "RAR", "RCR",
 						'R', IC2Items.getItem("plateiron"),
 						'A', IC2Items.getItem("advancedAlloy"),
 						'C', IC2Items.getItem("denseplatelead")
@@ -110,7 +105,7 @@ public class ModRecipes
 			ItemStack stackStandardRail  = GameRegistry.findItemStack(RAILCRAFT, "part.rail.standard", 1);
 			ItemStack stackWoodenRailbed = GameRegistry.findItemStack(RAILCRAFT, "part.railbed.wood", 1);
 			ItemStack stackStoneRailbed  = GameRegistry.findItemStack(RAILCRAFT, "part.railbed.stone", 1);
-			
+
 			ItemStack stackStandardTrack = new ItemStack(Blocks.rail);
 			ItemStack stackStoneSlab = new ItemStack(Blocks.stone_slab);
 
@@ -136,9 +131,7 @@ public class ModRecipes
 				GameRegistry.addRecipe(
 						new ItemStack(ModBlocks.blockStandardElectricTrack, 16),
 						new Object[] {
-							"R R",
-							"RBR",
-							"R R",
+							"R R", "RBR", "R R",
 							'R', ModItems.electricRail,
 							'B', stackWoodenRailbed
 						});
@@ -161,9 +154,7 @@ public class ModRecipes
 				GameRegistry.addRecipe(
 						new ItemStack(ModBlocks.blockAdvancedTrack, 16),
 						new Object[] {
-							"R R",
-							"RBR",
-							"R R",
+							"R R", "RBR", "R R",
 							'R', stackStandardRail,
 							'B', stackStoneRailbed
 						});
@@ -174,9 +165,7 @@ public class ModRecipes
 				GameRegistry.addRecipe(
 						new ItemStack(ModBlocks.blockAdvancedTrack, 16),
 						new Object[] {
-							"ISI",
-							"ISI",
-							"ISI",
+							"ISI", "ISI", "ISI",
 							'I', stackIronIngot,
 							'S', stackStoneSlab
 						});
@@ -190,9 +179,7 @@ public class ModRecipes
 				GameRegistry.addRecipe(
 						new ItemStack(ModBlocks.blockAdvancedElectricTrack, 16),
 						new Object[] {
-							"R R",
-							"RBR",
-							"R R",
+							"R R", "RBR", "R R",
 							'R', ModItems.electricRail,
 							'B', stackStoneRailbed
 						});
@@ -251,36 +238,32 @@ public class ModRecipes
 		}
 	}
 
-    private static void initNetworkAnchor()
-    {
-    	if (Ztech.config.enableNetworkAnchor)
-    	{
-            Recipes.advRecipes.addRecipe(
-                    new ItemStack(ModBlocks.blockNetworkAnchor, 1, 0),
-                    new Object[] {
-                        " A ",
-                        " B ",
-                        " C ",
-                        'A', IC2Items.getItem("electronicCircuit"),
-                        'B', IC2Items.getItem("machine"),
-                        'C', IC2Items.getItem("insulatedCopperCableItem")
-                        });
-            
-            Recipes.advRecipes.addRecipe(
-                    new ItemStack(ModBlocks.blockNetworkAnchor, 1, 1),
-                    new Object[] {
-                        " A ",
-                        " B ",
-                        " C ",
-                        'A', IC2Items.getItem("electronicCircuit"),
-                        'B', IC2Items.getItem("machine"),
-                        'C', IC2Items.getItem("insulatedIronCableItem")
-                        });
-            
-            UpgradeDictionary.put(IC2Items.getItem("overclockerUpgrade"), UpgradeDictionary.SPEED, 1, 1);
-            UpgradeDictionary.put(IC2Items.getItem("transformerUpgrade"), UpgradeDictionary.TIER, 1, 1);
-            UpgradeDictionary.put(IC2Items.getItem("energyStorageUpgrade"), UpgradeDictionary.STORAGE, 10000, 1);
-            /*
+	private static void initNetworkAnchor()
+	{
+		if (Ztech.config.enableNetworkAnchor)
+		{
+			Recipes.advRecipes.addRecipe(
+					new ItemStack(ModBlocks.blockNetworkAnchor, 1, 0),
+					new Object[] {
+						" A ", " B ", " C ",
+						'A', IC2Items.getItem("electronicCircuit"),
+						'B', IC2Items.getItem("machine"),
+						'C', IC2Items.getItem("insulatedCopperCableItem")
+					});
+
+			Recipes.advRecipes.addRecipe(
+					new ItemStack(ModBlocks.blockNetworkAnchor, 1, 1),
+					new Object[] {
+						" A ", " B ", " C ",
+						'A', IC2Items.getItem("electronicCircuit"),
+						'B', IC2Items.getItem("machine"),
+						'C', IC2Items.getItem("insulatedIronCableItem")
+					});
+
+			UpgradeDictionary.put(IC2Items.getItem("overclockerUpgrade"), UpgradeDictionary.SPEED, 1, 1);
+			UpgradeDictionary.put(IC2Items.getItem("transformerUpgrade"), UpgradeDictionary.TIER, 1, 1);
+			UpgradeDictionary.put(IC2Items.getItem("energyStorageUpgrade"), UpgradeDictionary.STORAGE, 10000, 1);
+			/*
             // GregTech
 
             if (isGregTechAvailable())
@@ -300,6 +283,31 @@ public class ModRecipes
             // RailCraft
 
             UpgradeDictionary.put(GameRegistry.findItemStack("Railcraft", "ic2.upgrade.lapotron", 1), UpgradeDictionary.STORAGE, 10000000, 3);*/
-    	}
-    }
+		}
+	}
+
+	private static void initSeedManager()
+	{
+		if (Ztech.config.enableSeedManager)
+		{
+			Recipes.advRecipes.addRecipe(
+					new ItemStack(ModBlocks.blockSeedManager, 1, 0),
+					new Object[] {
+						" Z ", "#M#", "#C#",
+						Character.valueOf('Z'), IC2Items.getItem("cropnalyzer"),
+						Character.valueOf('M'), IC2Items.getItem("machine"),
+						Character.valueOf('C'), IC2Items.getItem("electronicCircuit"),
+						Character.valueOf('S'), Items.wheat_seeds,
+						Character.valueOf('#'), Blocks.planks,
+					});
+			Recipes.advRecipes.addRecipe(
+					new ItemStack(ModBlocks.blockSeedManager, 1, 1), new Object[] {
+						"GGG", "#C#", "#Z#",
+						Character.valueOf('Z'), new ItemStack(ModBlocks.blockSeedManager, 1, 0),
+						Character.valueOf('C'), IC2Items.getItem("advancedCircuit"),
+						Character.valueOf('G'), Blocks.glass,
+						Character.valueOf('#'), Blocks.chest,
+					});
+		}
+	}
 }

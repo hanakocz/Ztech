@@ -73,7 +73,7 @@ public abstract class TileEntityElectricSink extends TileEntityElectricBase impl
 		if (nbt.hasKey("energy"))
 		{
 			energyStored = nbt.getDouble("energy");
-/*			nbt.removeTag("energy");
+			/*			nbt.removeTag("energy");
 			energyStored -= consumed;
 			nbt.setDouble("energy", energyStored);*/
 		}
