@@ -30,7 +30,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-@Mod(modid = Ztech.MODID, name = Ztech.MODNAME, version = "0.0.2", guiFactory = "ztech.client.gui.GuiFactory", dependencies = "required-after:IC2; after:gregtech_addon; after:IC2CA; after:Railcraft")
+@Mod(modid = Ztech.MODID, name = Ztech.MODNAME, version = "0.0.3", guiFactory = "ztech.client.gui.GuiFactory", dependencies = "required-after:IC2; after:gregtech_addon; after:IC2CA; after:Railcraft")
 public class Ztech
 {
 	@Instance(Ztech.MODID)
