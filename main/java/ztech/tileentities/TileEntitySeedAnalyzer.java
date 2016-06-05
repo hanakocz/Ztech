@@ -1,19 +1,21 @@
 package ztech.tileentities;
 
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import ic2.api.crops.CropCard;
+import ic2.api.crops.Crops;
 import ic2.api.item.IC2Items;
-import ic2.api.recipe.RecipeInputItemStack;
 import ic2.api.recipe.RecipeOutput;
 import ic2.core.BasicMachineRecipeManager;
 import ic2.core.block.invslot.InvSlotProcessableGeneric;
 import ic2.core.block.machine.container.ContainerStandardMachine;
 import ic2.core.block.machine.tileentity.TileEntityStandardMachine;
 import ic2.core.item.ItemCropSeed;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import ic2.core.upgrade.UpgradableProperty;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -35,7 +37,7 @@ public class TileEntitySeedAnalyzer extends TileEntityStandardMachine
 	public static void init()
 	{
 		analyzer = new BasicMachineRecipeManager();
-		analyzer.addRecipe(new RecipeInputItemStack(IC2Items.getItem("cropSeed"), 1), null, new ItemStack[] { IC2Items.getItem("cropSeed") });
+		//analyzer.addRecipe(new RecipeInputItemStack(IC2Items.getItem("cropSeed"), 1), null, new ItemStack[] { IC2Items.getItem("cropSeed") });
 	}
 
 	public static boolean isSeed(ItemStack stack)
@@ -48,10 +50,10 @@ public class TileEntitySeedAnalyzer extends TileEntityStandardMachine
 		return stack.getItem() == IC2Items.getItem("cropSeed").getItem();
 	}
 
-	public void updateEntity()
+	/*public void updateEntity()
 	{
 		super.updateEntity();
-	}
+	}*/
 	/* TODO	
     public boolean canOperate()
     {
@@ -147,7 +149,7 @@ public class TileEntitySeedAnalyzer extends TileEntityStandardMachine
 		if (this.outputSlot.canAdd(output.items))
 		{
 			ItemStack old_seed = this.inputSlot.get();
-			short id = ItemCropSeed.getIdFromStack(old_seed);
+			CropCard crop = Crops.instance.getCropCard(old_seed);
 			byte growth = ItemCropSeed.getGrowthFromStack(old_seed);
 			byte gain = ItemCropSeed.getGainFromStack(old_seed);
 			byte resistance = ItemCropSeed.getResistanceFromStack(old_seed);
@@ -163,7 +165,7 @@ public class TileEntitySeedAnalyzer extends TileEntityStandardMachine
 				return null;
 			}
 			operationLength = cost_to_upgrade[scan] / energyConsume;
-			old_seed = ItemCropSeed.generateItemStackFromValues(id, growth, gain, resistance, (byte)(scan + 1));
+			old_seed = ItemCropSeed.generateItemStackFromValues(crop, growth, gain, resistance, (byte)(scan + 1));
 			return new RecipeOutput(old_seed.getTagCompound(), new ItemStack[] { old_seed });
 		}
 		return null;
@@ -191,17 +193,6 @@ public class TileEntitySeedAnalyzer extends TileEntityStandardMachine
 	}
 
 	@Override
-	public List<ItemStack> getCompatibleUpgradeList()
-	{
-		List<ItemStack> itemstack = new ArrayList();
-		itemstack.add(IC2Items.getItem("overclockerUpgrade"));
-		itemstack.add(IC2Items.getItem("transformerUpgrade"));
-		itemstack.add(IC2Items.getItem("energyStorageUpgrade"));
-		itemstack.add(IC2Items.getItem("ejectorUpgrade"));
-		return itemstack;
-	}
-
-	@Override
 	public String getInventoryName()
 	{
 		return "Seed Analyzer";
@@ -215,5 +206,11 @@ public class TileEntitySeedAnalyzer extends TileEntityStandardMachine
 		ret.add("energy");
 
 		return ret;
+	}
+
+	@Override
+	public Set<UpgradableProperty> getUpgradableProperties() 
+	{
+		return EnumSet.of(UpgradableProperty.Processing, UpgradableProperty.Transformer, UpgradableProperty.EnergyStorage, UpgradableProperty.ItemConsuming, UpgradableProperty.ItemProducing);
 	}
 }

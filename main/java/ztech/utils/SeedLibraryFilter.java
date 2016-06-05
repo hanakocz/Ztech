@@ -1,5 +1,6 @@
 package ztech.utils;
 
+import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import ic2.api.item.IC2Items;
 import ic2.core.item.ItemCropSeed;
@@ -19,7 +20,9 @@ public class SeedLibraryFilter
 	public boolean bulk_mode = false;
 	public int unknown_type = 1;
 	public int unknown_ggr = 1;
-	public int seed_type = -1;
+	public CropCard seed_type = null;
+	public String seed_name = null;
+	public String seed_owner = null;
 	public int min_growth = 0;
 	public int min_gain = 0;
 	public int min_resistance = 0;
@@ -41,6 +44,7 @@ public class SeedLibraryFilter
 
 	public void copyFrom(SeedLibraryFilter source)
 	{
+
 		unknown_type = source.unknown_type;
 		unknown_ggr = source.unknown_ggr;
 		seed_type = source.seed_type;
@@ -124,22 +128,26 @@ public class SeedLibraryFilter
 
 	public boolean isMatch(ItemStack seed)
 	{
-		short id = ItemCropSeed.getIdFromStack(seed);
+		CropCard crop = Crops.instance.getCropCard(seed);
 		byte scan = ItemCropSeed.getScannedFromStack(seed);
 
-		if (scan == 0) {
+		if (scan == 0)
+		{
 			return (unknown_type > 0) && (unknown_ggr > 0);
 		} else if (unknown_type == 2) {
 			return false;
 		}
 
-		if (seed_type != -1 && seed_type != id) {
+		if (seed_type != null && seed_type != crop) {
 			return false;
 		}
 
-		if (scan < 4) {
+		if (scan < 4) //
+		{
 			return (unknown_ggr > 0);
-		} else if (unknown_ggr == 2) {
+		} 
+		else if (unknown_ggr == 2) 
+		{
 			return false;
 		}
 
@@ -169,19 +177,20 @@ public class SeedLibraryFilter
 
 	public String getCropName()
 	{
-		int crop_id = seed_type;
-		if (crop_id == -1)
+		CropCard crop = seed_type;
+		
+
+		if (crop == null)
 		{
 			return "Any";
 		}
-		else if (Crops.instance.getCropList()[crop_id] == null)
+		else if (!Crops.instance.getCrops().contains(crop))
 		{
 			return "(Invalid)";
 		}
 		else
 		{
-			return Crops.instance.getCropList()[crop_id].name();
-			//return CropCard.getCrop(crop_id).name();
+			return crop.name();
 		}
 	}
 
@@ -189,19 +198,19 @@ public class SeedLibraryFilter
 	{
 		if (seed == null) 
 		{
-			seed_type = -1;
+			seed_type = null;
 		}
 		else if (seed.getItem() != IC2Items.getItem("cropSeed").getItem())
 		{
-			seed_type = -1;
+			seed_type = null;
 		}
 		else if (ItemCropSeed.getScannedFromStack(seed) == 0)
 		{
-			seed_type = -1;
+			seed_type = null;
 		}
 		else
 		{
-			seed_type = ItemCropSeed.getIdFromStack(seed);
+			seed_type = Crops.instance.getCropCard(seed);
 		}
 		settingsChanged();
 	}
@@ -277,7 +286,8 @@ public class SeedLibraryFilter
 			unknown_type = input.getByte("unknown_type");
 			unknown_ggr = input.getByte("unknown_ggr");
 		}
-		seed_type = input.getInteger("seed_type");
+		seed_name = input.getString("name");
+		seed_owner = input.getString("owner");
 		min_growth = input.getInteger("min_growth");
 		min_gain = input.getInteger("min_gain");
 		min_resistance = input.getInteger("min_resistance");
@@ -296,9 +306,12 @@ public class SeedLibraryFilter
 
 	public void writeToNBT(NBTTagCompound output)
 	{
+		String owner  = seed_type != null ? seed_type.owner() : "unknown";
+		String name = seed_type != null ? seed_type.name() : "unknown";
 		output.setByte("unknown_type", (byte)unknown_type);
 		output.setByte("unknown_ggr", (byte)unknown_ggr);
-		output.setInteger("seed_type", seed_type);
+		output.setString("owner", owner);
+		output.setString("name", name);
 		output.setInteger("min_growth", min_growth);
 		output.setInteger("min_gain", min_gain);
 		output.setInteger("min_resistance", min_resistance);

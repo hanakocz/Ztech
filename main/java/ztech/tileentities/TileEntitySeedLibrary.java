@@ -1,5 +1,7 @@
 package ztech.tileentities;
 
+import ic2.api.crops.CropCard;
+import ic2.api.crops.Crops;
 import ic2.core.block.invslot.InvSlot;
 import ic2.core.block.machine.tileentity.TileEntityElectricMachine;
 import ic2.core.item.ItemCropSeed;
@@ -124,7 +126,7 @@ public class TileEntitySeedLibrary extends TileEntityElectricMachine // implemen
 		}
 	}
 
-	@Override
+	/*@Override
 	public void updateEntity()
 	{
 		double prevEnergy = energy;
@@ -142,7 +144,7 @@ public class TileEntitySeedLibrary extends TileEntityElectricMachine // implemen
 				ChannelHandler.sendPacketToAllAround(xCoord, yCoord, zCoord, 64, worldObj, new PacketMarkBlockForUpdate(this.xCoord, this.yCoord, this.zCoord, this.energy));
 			}
 		}
-	}
+	}*/
 
 	@Override
 	public double injectEnergy(ForgeDirection directionFrom, double amount, double voltage)
@@ -440,13 +442,13 @@ public class TileEntitySeedLibrary extends TileEntityElectricMachine // implemen
 	// Deep inventory management.
 	public String getKey(ItemStack seed)
 	{
-		short id = ItemCropSeed.getIdFromStack(seed);
+		CropCard crop = Crops.instance.getCropCard(seed);
 		byte growth = ItemCropSeed.getGrowthFromStack(seed);
 		byte gain = ItemCropSeed.getGainFromStack(seed);
 		byte resistance = ItemCropSeed.getResistanceFromStack(seed);
 		byte scan = ItemCropSeed.getScannedFromStack(seed);
 
-		return id + ":" + growth + ":" + gain + ":" + resistance + ":" + scan;
+		return crop + ":" + growth + ":" + gain + ":" + resistance + ":" + scan;
 	}
 
 	/*@Override
